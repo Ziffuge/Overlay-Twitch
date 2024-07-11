@@ -1,0 +1,16 @@
+{
+  "name": "overlay-twitch",
+  "version": "1.0.0",
+  "description": "(WIP) Local server managing overlays through web pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ziffuge",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
