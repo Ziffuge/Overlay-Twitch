@@ -3,9 +3,9 @@
 	"Author": "Ziffuge",
 	"CodePath": "app.html",
 	"Description": "Example description",
-	"Name": "Stream Deck Template",
+	"Name": "Stream Deck Local Server API",
 	"Icon": "actions/template/assets/action",
-	"URL": "https://www.elgato.com/en/gaming/stream-deck",
+	"URL": "https://github.com/Ziffuge/Overlay-Twitch",
 	"Version": "1.0.2",
 	"Software": {
 		"MinimumVersion": "5.0"
@@ -20,12 +20,12 @@
 			"MinimumVersion": "10"
 		}
 	],
-	"Category": "Template Plugin",
+	"Category": "Custom Plugin",
 	"CategoryIcon": "actions/template/assets/actionimage",
 	"Actions": [
 		{
 			"Icon": "actions/template/assets/actionimage",
-			"Name": "Example Action",
+			"Name": "Send Request",
 			"Controllers": ["Keypad", "Encoder"],
 			"Encoder": {
 				"layout": "$B1",
@@ -42,7 +42,7 @@
 				}
 			],
 			"Tooltip": "This is an example tooltip",
-			"UUID": "com.github.ziffuge.action",
+			"UUID": "com.github.ziffuge.sendRequest",
 			"PropertyInspectorPath": "actions/template/property-inspector/inspector.html"
 		}
 	]
