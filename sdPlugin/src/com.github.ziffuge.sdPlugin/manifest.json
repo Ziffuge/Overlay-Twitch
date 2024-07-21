@@ -25,7 +25,7 @@
 	"Actions": [
 		{
 			"Icon": "actions/template/assets/actionimage",
-			"Name": "Send Request",
+			"Name": "Local Server Request",
 			"Controllers": ["Keypad", "Encoder"],
 			"Encoder": {
 				"layout": "$B1",
@@ -41,9 +41,9 @@
 					"Image": "actions/template/assets/action"
 				}
 			],
-			"Tooltip": "This is an example tooltip",
-			"UUID": "com.github.ziffuge.sendRequest",
-			"PropertyInspectorPath": "actions/template/property-inspector/inspector.html"
+			"Tooltip": "This action allows you to send predefined requests to the local server of the app bundle with the plugin",
+			"UUID": "com.github.ziffuge.serverrequest",
+			"PropertyInspectorPath": "actions/serverRequest/property-inspector/inspector.html"
 		}
 	]
 }

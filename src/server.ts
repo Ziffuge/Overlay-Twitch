@@ -29,11 +29,14 @@ export function startServer() {
     });
     
     server.post('/death_counter', (req, res) => {
-        const {increment} = req.body;
-        if(increment == 1) {
-            counter++;
+        const type = req.body['type'];
+        if(type == "counter") {
+            const mode = req.body['mode'], value = Number(req.body['value']);
+            counter += (mode == 'increment')?value:-value;
+            res.status(200).send({counter: counter});
+        } else {
+            res.status(406).send({message: `This ressource only accept "type: counter", not "type: ${type}"`});
         }
-        res.status(200).send({counter: counter});
     })
 
     server.get('/config', (req, res) => {

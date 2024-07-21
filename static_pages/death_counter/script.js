@@ -16,7 +16,8 @@ var counter = document.querySelector("#deathCounter");
 var fetchingCounter = function() {
     fetch('http://localhost:3000/death_counter', {
             method:'POST',
-            body:JSON.stringify({ increment: 0})
+            headers: {"Content-type": "application/json"},
+            body:JSON.stringify({ type: "counter", mode:"increment", value:0})
     })
     .then(response => response.json())
     .then(parsedResult => currentCount = parsedResult['counter'])

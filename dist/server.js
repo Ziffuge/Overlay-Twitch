@@ -30,11 +30,15 @@ function startServer() {
         res.status(200).sendFile(path_1.default.join(__dirname, '..', 'static_pages', 'death_counter', 'index.html'));
     });
     server.post('/death_counter', (req, res) => {
-        const { increment } = req.body;
-        if (increment == 1) {
-            counter++;
+        const type = req.body['type'];
+        if (type == "counter") {
+            const mode = req.body['mode'], value = Number(req.body['value']);
+            counter += (mode == 'increment') ? value : -value;
+            res.status(200).send({ counter: counter });
         }
-        res.status(200).send({ counter: counter });
+        else {
+            res.status(406).send({ message: `This ressource only accept "type: counter", not "type: ${type}"` });
+        }
     });
     server.get('/config', (req, res) => {
         res.status(200).sendFile(path_1.default.join(__dirname, '..', 'static_pages', 'config', 'index.html'));
