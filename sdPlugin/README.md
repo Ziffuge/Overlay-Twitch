@@ -1,73 +1,21 @@
 
-# Stream Deck Plugin Template
+# Stream Deck Custom Plugin
 
-The `Stream Deck Plugin Template` is a template to let you get started quickly when writing a JavaScript plugin for [Stream Deck](https://docs.elgato.com/sdk/). `Stream Deck Plugin Template` requires Stream Deck 6.0 or later.
+This plugin allows interaction between the parent project's local server and a stream deck.
 
-## Description
+## Dependencies
 
-`Stream Deck Plugin Template` is a complete plugin that shows you how to
+Uses the Elgato SDK. I also used the provided template, which I currently haven't totally cleaned so there might be unused file or assets.
 
-- load and save settings using Stream Deck's persistent store
-- setup and communicate with the Property Inspector
-- pass messages directly from Property Inspector to the plugin (and vice versa)
-- localize your Property Inspector's UI to another language
+## Actions
 
-## Features
+### Server Request
+Allows user to send predefined custom requests to the local server.
 
-- code written in Javascript
-- cross-platform (macOS, Windows)
-- localization support
-- styled [Property Inspector](https://developer.elgato.com/documentation/stream-deck/sdk/property-inspector/) included
-- Property Inspector contains all required boilerplate code to let you instantly work on your plugin's code.
+## Credits
 
-## Quick Start Guide
+Custom Category Icon:
+- Icon by SVG Repo is licensed under CC0. No copyrights.
 
-A short guide to help you get started quickly.
-
-### Clone the repo
-
-```git clone https://github.com/elgatosf/streamdeck-plugin-template```
-
-### Replace Name
-
-Rename the folder as well as any references.
-
-`com.elgato.template.sdPlugin` with `my.domain.plugin-name.sdPlugin`
-
-> [!IMPORTANT]  
-> When sym-linking the plugin, the folder name must end with `.sdPlugin`.
-
-### Get the latest library
-
-You can either clone the javascript library or add it as a submodule to your repository.
-
-#### Clone
-
-```git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/my.domain.plugin-name/libs```
-
-#### Add Submodule
-
-```git submodule add https://github.com/elgatosf/streamdeck-javascript-sdk src/my.domain.plugin-name/libs```
-
-### Start Coding
-
-You can get started in app.js!
-
-```javascript
-const myAction = new Action('com.elgato.template.action');
-
-/**
- * The first event fired when Stream Deck starts
- */
-$SD.onConnected(({ actionInfo, appInfo, connection, messageType, port, uuid }) => {
-  console.log('Stream Deck connected!');
-});
-
-myAction.onKeyUp(({ action, context, device, event, payload }) => {
-  console.log('Your key code goes here!');
-});
-
-myAction.onDialRotate(({ action, context, device, event, payload }) => {
-  console.log('Your dial code goes here!');
-});
-```
+Server Request Icon:
+- Icon by Dazzle UI is licensed under CC BY 4.0. Changes were made to the original (mainly color).
