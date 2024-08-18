@@ -1,7 +1,7 @@
 
 # Stream Deck Custom Plugin
 
-This plugin allows interaction between the parent project's local server and a stream deck.
+This plugin allows to interact with the other subproject's local server directly with a stream deck.
 
 ## Dependencies
 
