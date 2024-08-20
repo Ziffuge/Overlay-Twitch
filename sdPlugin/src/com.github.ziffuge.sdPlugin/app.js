@@ -7,8 +7,8 @@ const sendRequest = new Action('com.github.ziffuge.serverrequest');
 
 var actions = {};
 
-function logError(err) {
-	$SD.logMessage({message: err, context: actions}.stringify());
+function logError(err, context) {
+	$SD.logMessage(JSON.stringify({type: err.name, message: err.message, context: context}));
 };
 
 function post(address, payload) {
@@ -19,7 +19,10 @@ function post(address, payload) {
 	})
 	.then(response => response.json())
 	.then(data => {if(debug) {console.log('POST request response :', data);}})
-	.catch(err => logError(err));
+	.catch(err => {
+		logError(err, {function: post, request: payload});
+		window.open("./serverError.html");
+	});
 };
 
 /**
@@ -57,5 +60,19 @@ sendRequest.onSendToPlugin(({ action, context, device, event, payload }) => { //
 });
 
 sendRequest.onKeyUp(({ action, context, device, event, payload }) => {
-	console.log("How the fuck did that triggered ?!!");
+	if(debug) {console.log(payload.settings);}
+
+	const { address, type, ...contextual } = payload.settings;
+	if(type === "counter") {
+		post(address, {
+			type: type,
+			mode: contextual.mode,
+			value: contextual.value
+		});
+	} else if(type === "other") {
+		post(address, {
+			type: type,
+			info: contextual.more
+		});
+	}
 });

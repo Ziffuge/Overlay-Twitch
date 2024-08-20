@@ -43,7 +43,7 @@ export function startServer() {
         res.status(200).sendFile(path.join(__dirname, '..', 'static_pages', 'config', 'index.html'));
     })
     
-    server.listen(port, () => {
+    server.listen(port, "0.0.0.0", () => {
         console.log(`Server running at http://localhost:${port}`);
     });
 }

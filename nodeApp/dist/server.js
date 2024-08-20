@@ -43,7 +43,7 @@ function startServer() {
     server.get('/config', (req, res) => {
         res.status(200).sendFile(path_1.default.join(__dirname, '..', 'static_pages', 'config', 'index.html'));
     });
-    server.listen(port, () => {
+    server.listen(port, "0.0.0.0", () => {
         console.log(`Server running at http://localhost:${port}`);
     });
 }
