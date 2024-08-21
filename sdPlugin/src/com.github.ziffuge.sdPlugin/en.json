@@ -1,10 +1,10 @@
 {
-  "Description": "Use this to create your own plugin", 
+  "Description": "This plugin allows customized interaction with the bundled app.", 
   "Name": "Stream Deck Template", 
-  "Category": "Templates", 
-  "com.elgato.template.action": {
-    "Name": "Action", 
-    "Tooltip": "This is the only action in this plugin"
+  "Category": "Custom", 
+  "com.github.ziffuge.serverrequest": {
+    "Name": "Local Server Request", 
+    "Tooltip": "This action allows you to send predefined requests to the local server of the app bundle with the plugin"
   },
   "Localization": {
     "More info": "More info",

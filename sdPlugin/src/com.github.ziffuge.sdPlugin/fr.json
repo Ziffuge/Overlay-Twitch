@@ -1,0 +1,20 @@
+{
+    "Description": "Ce plugin permet de réaliser des actions personnalisées en accord avec l'application du même projet.", 
+    "Name": "Boite à outils de Ziffuge", 
+    "Category": "Personnalisé", 
+    "com.github.ziffuge.serverrequest": {
+      "Name": "Requête au serveur local", 
+      "Tooltip": "Cette action permet d'envoyer une requête prédéfinie au serveur local"
+    },
+    "Localization": {
+      "More info": "More info",
+      "Message": "Message",
+      "Click Me": "Click Me",
+      "Button": "Button",
+      "More": "More",
+      "My name": "My name",
+      "My title": "My title",
+      "My message": "My message",
+      "My button": "My button"
+    }
+}

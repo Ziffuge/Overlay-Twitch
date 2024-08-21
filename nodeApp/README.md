@@ -13,5 +13,4 @@ Recently started using typescript for more rigour and structure. Nonetheless, th
 
 # Notes
 
-- The dockerfile is purposefully empty
 - Could be cool to have something like a database handled by the server but for what goal...
