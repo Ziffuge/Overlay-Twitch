@@ -2,11 +2,11 @@
 	"SDKVersion": 2,
 	"Author": "Ziffuge",
 	"CodePath": "app.html",
-	"Description": "Example description",
+	"Description": "Ziffuge's Toolbox",
 	"Name": "Stream Deck Local Server API",
 	"Icon": "actions/template/assets/action",
 	"URL": "https://github.com/Ziffuge/Overlay-Twitch",
-	"Version": "1.0.2",
+	"Version": "1.0.0",
 	"Software": {
 		"MinimumVersion": "5.0"
 	},
