@@ -31,9 +31,11 @@ var fetchingCounter = function() {
 var updateLevel = function () {
     if (currentCount < levels[nextLevel-1]) {
         nextLevel--;
+        updateLevel();
         return true;
     } else if (currentCount >= levels[nextLevel]) {
         nextLevel++;
+        updateLevel();
         return true;
     }
     return false;

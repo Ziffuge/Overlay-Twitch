@@ -6,7 +6,7 @@ async function main() {
     fetch("http://localhost:3000/death_counter", {
 		method: "POST",
         headers: {'Content-type': "application/json"},
-		body: JSON.stringify({ increment: 1 })
+		body: JSON.stringify({ type: "counter", mode:"increment", value:100})
 	}).then(resp => resp.json()).then(data => console.log(data)).catch(err => console.error("Request error :", err));
 }
 
