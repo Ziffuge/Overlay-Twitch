@@ -9,15 +9,31 @@ jobs:
         name: Build and Store Docker Image
         runs-on: windows-latest
         steps:
-            - name: 'Confirm ${{ github.job }}'
+            - name: 'Start ${{ github.job }}'
               run: 'echo ${{ github.job }} started'
             - name: Checkout code
               uses: actions/checkout@v4
+            - name: Log in to the Container Registry
+              uses: docker/login-action@v3.3.0
+              with: 
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v6.7.0
+              with:
+                  context: ./nodeApp
+                  push: true
+                  tags: ghcr.io/${{ github.repository }}:latest
+            - name: Confirm ${{ github.job }}
+              run: 'echo ${{ github.job }} terminated'
     build-plugin:
         name: Build and distribute plugin
         runs-on: windows-latest
         steps:
-            - name: 'Confirm ${{ github.job }}'
+            - name: 'Start ${{ github.job }}'
               run: 'echo ${{ github.job }} started'
             - name: Checkout code
               uses: actions/checkout@v4
+            - name: Confirm ${{ github.job }}
+              run: 'echo ${{ github.job }} terminated'
