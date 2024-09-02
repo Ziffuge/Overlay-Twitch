@@ -2,7 +2,7 @@ name: Release
 run-name: Launch the next Release by @${{ github.actor }}
 on: 
     push:
-        tags: '-v*.*.*'
+        tags: 'v*.*.*'
 
 jobs:
     build-docker:
