@@ -1,3 +1,7 @@
+# Usage
+
+A Docker image containing the app is deployed at '...' with each release.
+
 # Local Server
 
 This subproject's purpose is to provide a local server managing HTML/CSS custom pages to be displayed by OBS.
