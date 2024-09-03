@@ -27,6 +27,6 @@ jobs:
               with:
                   context: ./nodeApp
                   push: true
-                  tags: ghcr.io/${{ github.repository }}:latest
+                  tags: ghcr.io/ziffuge/overlay-twitch:latest
             - name: Confirm ${{ github.job }}
               run: 'echo ${{ github.job }} terminated'
