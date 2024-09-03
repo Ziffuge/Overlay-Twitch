@@ -7,7 +7,7 @@ on:
 jobs:
     build-docker:
         name: Build and Store Docker Image
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         steps:
             - name: 'Start ${{ github.job }}'
               run: 'echo ${{ github.job }} started'
@@ -27,15 +27,5 @@ jobs:
                   context: ./nodeApp
                   push: true
                   tags: ghcr.io/${{ github.repository }}:latest
-            - name: Confirm ${{ github.job }}
-              run: 'echo ${{ github.job }} terminated'
-    build-plugin:
-        name: Build and distribute plugin
-        runs-on: windows-latest
-        steps:
-            - name: 'Start ${{ github.job }}'
-              run: 'echo ${{ github.job }} started'
-            - name: Checkout code
-              uses: actions/checkout@v4
             - name: Confirm ${{ github.job }}
               run: 'echo ${{ github.job }} terminated'
