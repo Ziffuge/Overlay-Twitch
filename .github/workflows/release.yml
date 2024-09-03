@@ -4,7 +4,9 @@ on:
     release:
         types: published
         tags: 'v*.*.*'
-
+permissions:
+  contents: read
+  packages: write
 jobs:
     build-docker:
         name: Build and Store Docker Image
