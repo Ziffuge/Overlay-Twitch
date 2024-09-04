@@ -1,20 +1,27 @@
-# Usage
+# Sub-Project : Node.js App
+## Description
 
-A Docker image containing the app is deployed at '...' with each release.
+This sub-project's purpose is to learn how to use HTML/CSS/Javascript to make a Node.js app.
+Currently, it works like a local server to which requests can be send.
 
-# Local Server
+Here is a list of currently requestable pages:
+- config : not much going on here, future server configuration page
+- death_counter : a counter changing color and size with the number
 
-This subproject's purpose is to provide a local server managing HTML/CSS custom pages to be displayed by OBS.
-Currently, it only features one interactive page but I hope more will be available in the future.
+## Usage
 
-# Stream Deck Compatibility
+A Docker image containing the app is deployed at "ghcr.io/ziffuge/overlay-twitch" with each release.
+See [How to Install](../README.md#how-to-install) for instructions.
 
-The Elgato Stream Deck compatibility is handled by the other subproject. 
+## Stream Deck Compatibility
 
-# Typescript
+The Elgato Stream Deck compatibility is handled by the other sub-project. 
 
-Recently started using typescript for more rigour and structure. Nonetheless, the (future) stream deck plugin uses javascript because the SDK don't seems to work with typescript (haven't searched but there is already not enough doc for the javascript SDK).
+## Typescript
 
-# Notes
+In fact, this sub-project uses typescript and not javascript. This choice was made to integrate more rigour in the code. (And also just because I was curious)
 
+## Notes
+
+- name might be a bit silly
 - Could be cool to have something like a database handled by the server but for what goal...
