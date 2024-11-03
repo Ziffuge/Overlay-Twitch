@@ -1,5 +1,5 @@
 name: Release
-run-name: Launch the next Release by @${{ github.actor }}
+run-name: Launch the next Release (${{ github.event.release.tags }}) by @${{ github.actor }}
 on: 
     release:
         types: published
@@ -29,6 +29,6 @@ jobs:
               with:
                   context: ./nodeApp
                   push: true
-                  tags: ghcr.io/ziffuge/overlay-twitch:latest
+                  tags: ghcr.io/ziffuge/overlay-twitch:latest,ghcr.io/ziffuge/overlay-twitch:${{ github.event.release.tags }}
             - name: Confirm ${{ github.job }}
               run: 'echo ${{ github.job }} terminated'
