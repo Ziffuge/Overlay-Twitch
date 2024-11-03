@@ -1,7 +1,7 @@
 // * config values
 const upKey = ")";
 const downKey = "-";
-const levels = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100];
+const levels = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 const nLevel = levels.length;
 const iColor = {r:255, g:255, b:255};
 const fColor = {r:196, g:15, b:15};
