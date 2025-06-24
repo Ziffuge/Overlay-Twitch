@@ -1,0 +1,13 @@
+{
+    "name": "overlay-twitch",
+    "private": true,
+    "workspaces": [
+        "nodeApp",
+        "sdPlugin",
+        "zut"
+    ],
+    "dependencies": {
+        "@elgato/cli": "^1.4.0",
+        "zod": "^3.25.67"
+    }
+}
