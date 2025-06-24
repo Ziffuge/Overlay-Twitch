@@ -12,22 +12,14 @@ const localhostOn = true; // change to false if index.html is used as standalone
 var currentCount = 0;
 var nextLevel = 1;
 var counter = document.querySelector("#deathCounter");
+var counter_id = -1;
 
 var fetchingCounter = function() {
-    fetch('http://localhost:3000/death_counter', {
-            method:'POST',
-            headers: {"Content-type": "application/json"},
-            body:JSON.stringify({ type: "counter", mode:"increment", value:0})
-    })
-    .then(response => response.json())
-    .then(parsedResult => currentCount = parsedResult['counter'])
-    .then(() => {
-        counter.innerHTML = currentCount.toString();
-        applyStyle();
-    })
-    .catch(_ => console.log("Something went wrong, make sure the server is running"));
+    socket.send(JSON.stringify({"type": "counter", "id": counter_id, "value": 1, "mode": "increment"}));
 };
 
+
+// * Handle style updates of the counter
 var updateLevel = function () {
     if (currentCount < levels[nextLevel-1]) {
         nextLevel--;
@@ -56,10 +48,7 @@ var applyStyle = function () {
     }
 }
 
-if(localhostOn) {
-    setInterval(fetchingCounter, 5000);
-}
-
+// * Handle "web browser" keyboard actions
 document.addEventListener("keydown", function (event) {
     if (event.key === upKey) {
         currentCount++;
@@ -71,7 +60,38 @@ document.addEventListener("keydown", function (event) {
         applyStyle();
     } else if (localhostOn && event.key === " ") {
         fetchingCounter();
-    } else {
-        console.log(event.key);
     }
 });
+
+// * WebSocket Client
+const socket = new WebSocket('ws://localhost:3000');
+
+socket.onopen = () => { 
+    console.log('Connected to the WebSocket server');
+};
+
+socket.onmessage = (message) => { 
+    const data = JSON.parse(message.data);
+    if(data.type === 'counter') {
+        if(data.id === counter_id) {
+            currentCount = data.value;
+            counter.innerHTML = currentCount.toString();
+            applyStyle();
+        }
+    } else if(data.type === 'counter-id') {
+        counter_id = data.id;
+        currentCount = data.value;
+        counter.innerHTML = currentCount.toString();
+        applyStyle();
+    } else if(data.type === 'connection') {
+        console.log('Connection status :', data.status);
+        socket.send(JSON.stringify({"type": "counter-id", "from": window.location.pathname}));
+    } else {
+        console.log('Received:', message.data);
+    }
+};
+
+socket.onclose = () => { 
+    socket.close(1000);
+    console.log('Disconnected from the WebSocket server');
+};
