@@ -79,7 +79,8 @@ function initExpressApp(app: express.Application, staticPath: string, messageDis
             const {handler, parsed} = messageDispatcher.dispatch(req.body);
             res.status(200).send(handler.handle(parsed));
         } catch (error) {
-            console.log(`(Express) Received an ill-foramted message: ${req.body.string}`);
+            console.log(error);
+            console.log(`(Express) Received an ill-formated message: ${JSON.stringify(req.body)}`);
             res.status(406).send({ error: `Ill-formated message`});
         }
     });

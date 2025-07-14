@@ -8,7 +8,7 @@ class ServerCore {
         console.log("ServerCore initialized");
     }
     isValidId(id) {
-        return id < this.counters.length;
+        return 0 <= id && id < this.counters.length;
     }
     getCounter(id) {
         if (!this.isValidId(id)) {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Server Request Settings</title>
+    <meta charset="utf-8"/>
+    <script src="../sdpi-components.js"></script>
+    <script src="server-request.js"></script>
+</head>
+
+<body>
+    <!-- <script>
+        const { streamDeckClient } = SDPIComponents;
+        
+        streamDeckClient.send("keyDown", {test: "fake payload"});
+
+        function pingPlugin() {
+            console.log("test ping");
+            streamDeckClient.send("sendToPlugin", {"keyDown": true});
+        }
+    </script> -->
+    <sdpi-item label="Address">
+        <sdpi-textfield required placeholder="http://localhost:****" setting="address"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="Mode">
+        <sdpi-radio setting="mode" columns="2" default="increment">
+            <option value="increment">Increment</option>
+            <option value="decrement">Decrement</option>
+        </sdpi-radio>
+    </sdpi-item>
+    <sdpi-item label="Value">
+        <sdpi-range setting="value" min="1" max="10" step="1" showlabels></sdpi-range>
+    </sdpi-item>
+    <sdpi-item label="Simulate keyDown">
+        <sdpi-button onclick="pingPlugin()">Ping!</sdpi-button>
+    </sdpi-item>
+</body>
+
+</html>

@@ -65,7 +65,8 @@ function initExpressApp(app, staticPath, messageDispatcher) {
             res.status(200).send(handler.handle(parsed));
         }
         catch (error) {
-            console.log(`(Express) Received an ill-foramted message: ${req.body.string}`);
+            console.log(error);
+            console.log(`(Express) Received an ill-formated message: ${JSON.stringify(req.body)}`);
             res.status(406).send({ error: `Ill-formated message` });
         }
     });
@@ -83,14 +84,12 @@ function initWebSocketServer(server, messageDispatcher) {
         ws.on("message", (message) => {
             try {
                 const { handler, parsed } = messageDispatcher.dispatch(JSON.parse(message.toString("utf-8")));
-                const resp = handler.handle(parsed);
-                // console.log(resp);
-                ws.send(JSON.stringify(resp));
+                ws.send(JSON.stringify(handler.handle(parsed)));
             }
             catch (error) {
                 console.log(error);
                 console.log(`(WS) Received an ill-formated message: ${message}`);
-                return { error: `Ill-formated message` };
+                ws.send(JSON.stringify({ error: `Ill-formated message` }));
             }
         });
         //send immediatly a feedback to the incoming connection

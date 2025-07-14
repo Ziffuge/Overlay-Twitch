@@ -11,7 +11,7 @@ export class ServerCore {
     }
 
     public isValidId(id: number): boolean {
-        return id < this.counters.length;
+        return 0 <= id && id < this.counters.length;
     }
 
     public getCounter(id: number): Counter {

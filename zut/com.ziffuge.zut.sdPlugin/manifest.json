@@ -1,6 +1,6 @@
 {
 	"Name": "ZUT",
-	"Version": "0.1.0.0",
+	"Version": "1.1.0-alpha",
 	"Author": "Ziffuge",
 	"Actions": [
 		{
@@ -18,10 +18,32 @@
 					"TitleAlignment": "middle"
 				}
 			]
+		},
+		{
+			"Icon": "imgs/actions/server-request/serverRequestIcon",
+			"Name": "Local Server Request",
+			"Controllers": ["Keypad", "Encoder"],
+			"Encoder": {
+				"layout": "$B1",
+				"TriggerDescription": {
+					"Rotate": "Describe the rotation",
+					"Push": "Describe the encoder push",
+					"Touch": "Describe the touch",
+					"LongTouch": "Describe the long touch"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/server-request/serverRequestDefaultImage"
+				}
+			],
+			"Tooltip": "Sends predefined requests to the local server of the app bundled with the plugin",
+			"UUID": "com.ziffuge.zut.serverrequest",
+			"PropertyInspectorPath": "ui/server-request/server-request.html"
 		}
 	],
-	"Category": "ZUT",
-	"CategoryIcon": "imgs/plugin/category-icon",
+	"Category": "Ziffuge's Utility Toolbox",
+	"CategoryIcon": "imgs/plugin/customCategoryIcon",
 	"CodePath": "bin/plugin.js",
 	"Description": "Ziffuge's Utility Toolbox",
 	"Icon": "imgs/plugin/marketplace",
