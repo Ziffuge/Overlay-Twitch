@@ -1,3 +1,0 @@
-[submodule "src/com.github.ziffuge.sdPlugin/libs"]
-	path = src/com.github.ziffuge.sdPlugin/libs
-	url = https://github.com/elgatosf/streamdeck-javascript-sdk
