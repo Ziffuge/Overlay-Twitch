@@ -29,25 +29,43 @@ export function startServer(port: number) {
         console.log(`Server running at http://localhost:${port}`);
     });
 
+    return {"wss": wss, "server": server};
+
     // Graceful Shutdown
-    process.on('SIGINT', () => {
-        console.log('Received SIGINT. Gracefully shutting down...');
+    // process.on('SIGINT', () => {
+    //     console.log('Received SIGINT. Gracefully shutting down...');
 
-        // Initiate shutdown sequence : WebSockets -> HTTP -> Process
-        closeWebSocketServer(wss, () => {
-            console.log('WebSocketServer closed.');
-            server.close(() => { 
-                console.log('HTTP server closed.');
-                process.exit(0);
-            });
+    //     // Initiate shutdown sequence : WebSockets -> HTTP -> Process
+    //     closeWebSocketServer(wss, () => {
+    //         console.log('WebSocketServer closed.');
+    //         server.close(() => { 
+    //             console.log('HTTP server closed.');
+    //             process.exit(0);
+    //         });
+    //     });
+
+    //     // Forceful shut down
+    //     setTimeout(() => {
+    //         console.error('Could not close connections in time, forcefully shutting down.');
+    //         process.exit(1);
+    //     }, 10000);
+    // });
+}
+
+export function stopServer(wss: WebSocketServer, server: http.Server) {
+    // Initiate shutdown sequence : WebSockets -> HTTP -> Process
+    closeWebSocketServer(wss, () => {
+        console.log('WebSocketServer closed.');
+        server.close(() => { 
+            console.log('HTTP server closed.');
         });
-
-        // Forceful shut down
-        setTimeout(() => {
-            console.error('Could not close connections in time, forcefully shutting down.');
-            process.exit(1);
-        }, 10000);
     });
+
+    // // Forceful shut down
+    // setTimeout(() => {
+    //     console.error('Could not close connections in time, forcefully shutting down.');
+    //     process.exit(1);
+    // }, 10000);
 }
 
 

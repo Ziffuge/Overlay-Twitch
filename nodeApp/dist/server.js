@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startServer = startServer;
+exports.stopServer = stopServer;
 const express_1 = __importDefault(require("express"));
 const ws_1 = require("ws");
 const http_1 = __importDefault(require("http"));
@@ -25,23 +26,38 @@ function startServer(port) {
     server.listen(port, "0.0.0.0", () => {
         console.log(`Server running at http://localhost:${port}`);
     });
+    return { "wss": wss, "server": server };
     // Graceful Shutdown
-    process.on('SIGINT', () => {
-        console.log('Received SIGINT. Gracefully shutting down...');
-        // Initiate shutdown sequence : WebSockets -> HTTP -> Process
-        closeWebSocketServer(wss, () => {
-            console.log('WebSocketServer closed.');
-            server.close(() => {
-                console.log('HTTP server closed.');
-                process.exit(0);
-            });
+    // process.on('SIGINT', () => {
+    //     console.log('Received SIGINT. Gracefully shutting down...');
+    //     // Initiate shutdown sequence : WebSockets -> HTTP -> Process
+    //     closeWebSocketServer(wss, () => {
+    //         console.log('WebSocketServer closed.');
+    //         server.close(() => { 
+    //             console.log('HTTP server closed.');
+    //             process.exit(0);
+    //         });
+    //     });
+    //     // Forceful shut down
+    //     setTimeout(() => {
+    //         console.error('Could not close connections in time, forcefully shutting down.');
+    //         process.exit(1);
+    //     }, 10000);
+    // });
+}
+function stopServer(wss, server) {
+    // Initiate shutdown sequence : WebSockets -> HTTP -> Process
+    closeWebSocketServer(wss, () => {
+        console.log('WebSocketServer closed.');
+        server.close(() => {
+            console.log('HTTP server closed.');
         });
-        // Forceful shut down
-        setTimeout(() => {
-            console.error('Could not close connections in time, forcefully shutting down.');
-            process.exit(1);
-        }, 10000);
     });
+    // Forceful shut down
+    setTimeout(() => {
+        console.error('Could not close connections in time, forcefully shutting down.');
+        process.exit(1);
+    }, 10000);
 }
 // + ==================================== +
 // | Express App : Distributes HTML Pages |
