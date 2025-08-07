@@ -1,6 +1,6 @@
 {
 	"Name": "ZUT",
-	"Version": "1.1.0-alpha",
+	"Version": "1.1.0.0",
 	"Author": "Ziffuge",
 	"Actions": [
 		{
@@ -42,7 +42,7 @@
 			"PropertyInspectorPath": "ui/server-request/server-request.html"
 		}
 	],
-	"Category": "Ziffuge's Utility Toolbox",
+	"Category": "ZUT",
 	"CategoryIcon": "imgs/plugin/customCategoryIcon",
 	"CodePath": "bin/plugin.js",
 	"Description": "Ziffuge's Utility Toolbox",
