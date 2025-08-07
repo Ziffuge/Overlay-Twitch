@@ -22,7 +22,10 @@
 		{
 			"Icon": "imgs/actions/server-request/serverRequestIcon",
 			"Name": "Local Server Request",
-			"Controllers": ["Keypad", "Encoder"],
+			"Controllers": [
+				"Keypad",
+				"Encoder"
+			],
 			"Encoder": {
 				"layout": "$B1",
 				"TriggerDescription": {
