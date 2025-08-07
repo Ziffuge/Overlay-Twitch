@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import { ServerCore } from "./core";
+import { ServerCore } from "./core.js";
 import { z } from "zod";
 
 const BaseMessage = z.object({

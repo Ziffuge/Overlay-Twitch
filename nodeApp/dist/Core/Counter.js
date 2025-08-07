@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Counter = void 0;
-class Counter {
+export class Counter {
     constructor(file) {
         this._value = 0;
         this._file = file;
@@ -16,4 +13,3 @@ class Counter {
         this._value = v;
     }
 }
-exports.Counter = Counter;

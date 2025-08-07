@@ -3,11 +3,24 @@
     "private": true,
     "workspaces": [
         "nodeApp",
-        "sdPlugin",
         "zut"
     ],
     "dependencies": {
         "@elgato/cli": "^1.4.0",
         "zod": "^3.25.67"
+    },
+    "overrides": {
+        "ink-select-input": {
+            "ink": "^6.0.1"
+        },
+        "ink-text-input": {
+            "ink": "^6.0.1"
+        },
+        "fullscreen-ink": {
+            "ink": "^6.0.1"
+        },
+        "ink-form": {
+            "ink": "^6.0.1"
+        }
     }
 }

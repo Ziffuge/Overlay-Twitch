@@ -1,17 +1,11 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CounterIDHandler = exports.CounterHandler = exports.MessageDispatcher = void 0;
-const path_1 = __importDefault(require("path"));
-const fs_1 = __importDefault(require("fs"));
-const zod_1 = require("zod");
-const BaseMessage = zod_1.z.object({
-    "type": zod_1.z.string()
+import path from "path";
+import fs from "fs";
+import { z } from "zod";
+const BaseMessage = z.object({
+    "type": z.string()
 });
 // Routes messages
-class MessageDispatcher {
+export class MessageDispatcher {
     constructor(counterMH, counterIDMH) {
         this.counterMH = counterMH;
         this.counterIDMH = counterIDMH;
@@ -38,8 +32,7 @@ class MessageDispatcher {
         }
     }
 }
-exports.MessageDispatcher = MessageDispatcher;
-class CounterHandler {
+export class CounterHandler {
     constructor(core) {
         this.core = core;
     }
@@ -57,14 +50,13 @@ class CounterHandler {
         return { "id": data.id, "value": this.core.getValue(data.id) };
     }
 }
-exports.CounterHandler = CounterHandler;
 CounterHandler.CounterMessage = BaseMessage.extend({
-    "type": zod_1.z.literal("counter"),
-    "id": zod_1.z.number(),
-    "value": zod_1.z.number(),
-    "mode": zod_1.z.enum(["increment", "decrement"])
+    "type": z.literal("counter"),
+    "id": z.number(),
+    "value": z.number(),
+    "mode": z.enum(["increment", "decrement"])
 });
-class CounterIDHandler {
+export class CounterIDHandler {
     constructor(core, staticPath) {
         this.core = core;
         this.staticPath = staticPath;
@@ -76,8 +68,8 @@ class CounterIDHandler {
         return CounterIDHandler.CounterIdMessage.parse(raw);
     }
     handle(data) {
-        const filePath = path_1.default.join(this.staticPath, data.from);
-        if (!fs_1.default.existsSync(filePath)) {
+        const filePath = path.join(this.staticPath, data.from);
+        if (!fs.existsSync(filePath)) {
             console.log(`Couldn't find ${filePath}`);
             return { error: `Couldn't find the given ressources path: ${data.from}` };
         }
@@ -88,8 +80,7 @@ class CounterIDHandler {
         return { "type": "counter-id", "id": id, "value": this.core.getValue(id) };
     }
 }
-exports.CounterIDHandler = CounterIDHandler;
 CounterIDHandler.CounterIdMessage = BaseMessage.extend({
-    "type": zod_1.z.literal("counter-id"),
-    "from": zod_1.z.string()
+    "type": z.literal("counter-id"),
+    "from": z.string()
 });

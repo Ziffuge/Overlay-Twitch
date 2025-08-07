@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ServerCore = void 0;
-const Counter_1 = require("./Counter");
-class ServerCore {
+import { Counter } from "./Counter.js";
+export class ServerCore {
     constructor() {
         this.counters = new Array();
         console.log("ServerCore initialized");
@@ -38,7 +35,7 @@ class ServerCore {
         }
     }
     addCounter(file) {
-        return this.counters.push(new Counter_1.Counter(file)) - 1;
+        return this.counters.push(new Counter(file)) - 1;
     }
     counterFromFile(file) {
         return this.counters.findIndex((c) => c.file == file);
@@ -50,4 +47,3 @@ class ServerCore {
         this.wss.clients.forEach((ws) => ws.send(message));
     }
 }
-exports.ServerCore = ServerCore;

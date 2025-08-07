@@ -1,5 +1,5 @@
 import { WebSocketServer } from "ws";
-import { Counter } from "./Counter";
+import { Counter } from "./Counter.js";
 
 export class ServerCore {
     private counters: Counter[];

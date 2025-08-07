@@ -64,7 +64,10 @@ document.addEventListener("keydown", function (event) {
 });
 
 // * WebSocket Client
-const socket = new WebSocket('ws://localhost:3000');
+const host = window.location.hostname;
+const port = window.location.port;
+const socketURL = `ws://${host}:${port}`;
+const socket = new WebSocket(socketURL);
 
 socket.onopen = () => { 
     console.log('Connected to the WebSocket server');
