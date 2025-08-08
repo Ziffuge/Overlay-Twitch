@@ -1,8 +1,8 @@
 {
   "name": "node-app",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "(WIP) Local server managing overlays through web pages",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "clean": "powershell Remove-Item -Recurse -Force .\\dist\\*"
   },
